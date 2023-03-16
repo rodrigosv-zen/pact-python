@@ -115,21 +115,26 @@ As such, the tests use the pact-python Verifier to perform this verification. Tw
 
 ### Running
 
-To avoid package version conflicts with different applications, it is recommended to run these tests from a
+To avoid package version conflicts with different applications, it is recommended to run these tests from a separated terminal and a new
 [Virtual Environment]
 
-The following commands can be run from within your [Virtual Environment], in the `examples/flask_provider`.
-
-To perform the python tests:
-```bash
-pip install -r requirements.txt # Install the dependencies for the Flask example
-pip install -e ../../           # Using setup.py in the pact-python root, install any pact dependencies and pact-python
-./run_pytest.sh                 # Wrapper script to first run Flask, and then run the tests
-```
+The following commands can be run from the `examples/flask_provider`:
+- Create a virtual environment:
+    ```bash
+    python -m venv venv
+    ```
+- Activate the virtual environment:
+    ```bash
+    source venv/bin/activate
+    ```
+- Install any necessary dependencies:
+    ```bash
+    pip install -r requirements.txt
+    pip install -e ../../           # Using setup.py in the pact-python root, install any pact dependencies and pact-python
+    ```
 
 To perform verification using CLI to verify the [Pact file] against the Flask [Provider] instead of the python tests:
 ```bash
-pip install -r requirements.txt # Install the dependencies for the Flask example
 ./verify_pact.sh                # Wrapper script to first run Flask, and then use `pact-verifier` to verify locally
 ```
 
@@ -137,7 +142,6 @@ To perform verification using CLI, but verifying the [Pact file] previously prov
 results. This example requires that the [Pact broker] is already running, and the [Consumer] tests have been published
 already, described in the [consumer](#consumer) section above.
 ```bash
-pip install -r requirements.txt # Install the dependencies for the Flask example
 ./verify_pact.sh 1              # Wrapper script to first run Flask, and then use `pact-verifier` to verify and publish
 ```
 
@@ -153,14 +157,6 @@ The following file(s) will be created when the tests are run
 | Filename                    | Contents  |
 |-----------------------------| ----------|
 | flask_provider/log/pact.log | All Pact interactions with the Flask Provider. Every interaction example retrieved from the Pact Broker will be performed during the Verification test; the request/response logged here. | 
-
-### Output
-
-The following file(s) will be created when the tests are run
-
-| Filename                      | Contents  |
-|-------------------------------| ----------|
-| fastapi_provider/log/pact.log | All Pact interactions with the FastAPI Provider. Every interaction example retrieved from the Pact Broker will be performed during the Verification test; the request/response logged here. | 
 
 ## pacts
 
