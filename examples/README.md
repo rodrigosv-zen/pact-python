@@ -37,15 +37,19 @@ docker run -d --name postgres -e POSTGRES_PASSWORD=password -e POSTGRES_USER=pos
 ```
 Start the broker
 ```bash
-docker run -d --name pact-broker --link postgres:postgres -e PACT_BROKER_DATABASE_USERNAME=postgres -e PACT_BROKER_DATABASE_PASSWORD=password -e PACT_BROKER_DATABASE_HOST=192.168.64.9 -e PACT_BROKER_DATABASE_NAME=postgres -e PACT_BROKER_BASIC_AUTH_USERNAME=pactbroker -e  PACT_BROKER_BASIC_AUTH_PASSWORD=pactbroker -p 80:9292 pactfoundation/pact-broker
+docker run --name pact-broker --link postgres:postgres -e PACT_BROKER_DATABASE_USERNAME=postgres -e PACT_BROKER_DATABASE_PASSWORD=password -e PACT_BROKER_DATABASE_HOST=192.168.64.9 -e PACT_BROKER_DATABASE_NAME=postgres -e PACT_BROKER_BASIC_AUTH_USERNAME=pactbroker -e  PACT_BROKER_BASIC_AUTH_PASSWORD=pactbroker -p 80:9292 pactfoundation/pact-broker
 ```
 if the database host doesn't match, run:
 ```bash
 minikube ip
 ```
-and replace the result in the ```PACT_BROKER_DATABASE_HOST``` above.
+and replace the result in the ```PACT_BROKER_DATABASE_HOST``` above, and in the next places:
 
-You should then be able to open a browser and navigate to http://192.168.64.9, it will open a form to log in, just use ```pactbroker``` as username and password, then you will initially be able to see the default Example App/Example API Pact.
+examples/common/sharedfixtures.py ```PACT_BROKER_BASE_URL```
+examples/consumer/tests/consumer/test_user_consumer.py ```PACT_BROKER_URL```
+examples/flask_provider/verify_pact.sh ```--pact-url```
+
+The broker takes some time to set up the app to release the UI, after that, you should then be able to open a browser and navigate to http://192.168.64.9, it will open a form to log in, just use ```pactbroker``` as username and password, then you will be able to see the default Example App/Example API Pact.
 
 Running the [Pact Broker] outside the tests will mean you are able to then see the [Pact file]s submitted to the
 [Pact Broker] as the various tests are performed.
