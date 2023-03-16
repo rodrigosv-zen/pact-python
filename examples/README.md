@@ -93,13 +93,18 @@ following commands can be run from the `examples/consumer` folder:
 
 The following file(s) will be created when the tests are run:
 
-| Filename                                    | Contents  |
-|---------------------------------------------| ----------|
-| consumer/pact-mock-service.log              | All interactions with the mock provider such as expected interactions, requests, and interaction verifications. |
-| consumer/userserviceclient-userservice.json | This contains the Pact interactions between the `UserServiceClient` and `UserService`, as defined in the tests. The naming being derived from the named Pacticipants: `Consumer("UserServiceClient")` and `Provider("UserService")` |
+| Filename                                                   | Contents                                                 |
+|------------------------------------------------------------| ---------------------------------------------------------|
+| consumer/pact-mock-service.log                             | All interactions with the mock provider such as expected |
+|                                                            | interactions, requests, and interaction verifications.   |
+| consumer/tests/consumer/userserviceclient-userservice.json | This contains the Pact interactions between the          |
+|                                                            | `UserServiceClient` and `UserService`, as defined in the |
+|                                                            | tests. The naming being derived from the named           |
+|                                                            | Pacticipants: `Consumer("UserServiceClient")` and        |
+|                                                            | `Provider("UserService")`                                |
 
 ## flask_provider
-
+examples/consumer/tests/consumer/userserviceclient-userservice.json
 The Flask [Provider] example consists of a basic Flask app, with a single endpoint route.
 This implements the service expected by the [consumer](#consumer).
 
