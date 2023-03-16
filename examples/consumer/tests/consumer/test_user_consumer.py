@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 # If publishing the Pact(s), they will be submitted to the Pact Broker here.
 # For the purposes of this example, the broker is started up as a fixture defined
 # in conftest.py. For normal usage this would be self-hosted or using PactFlow.
-PACT_BROKER_URL = "http://localhost"
+PACT_BROKER_URL = "http://192.168.64.9"
 PACT_BROKER_USERNAME = "pactbroker"
 PACT_BROKER_PASSWORD = "pactbroker"
 

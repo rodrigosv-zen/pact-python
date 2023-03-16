@@ -60,7 +60,7 @@ def publish_existing_pact(broker):
     source = str(pathlib.Path.cwd().joinpath("..", "pacts").resolve())
     pacts = [f"{source}:/pacts"]
     envs = {
-        "PACT_BROKER_BASE_URL": "http://broker_app:9292",
+        "PACT_BROKER_BASE_URL": "http://192.168.64.9",
         "PACT_BROKER_USERNAME": "pactbroker",
         "PACT_BROKER_PASSWORD": "pactbroker",
     }
@@ -70,11 +70,11 @@ def publish_existing_pact(broker):
     print("Publishing existing Pact")
     client.containers.run(
         remove=True,
-        network="broker_default",
+        network="broker-default",
         volumes=pacts,
         image="pactfoundation/pact-cli:latest",
         environment=envs,
-        command="publish /pacts --consumer-app-version 1",
+        command="publish example/pacts --consumer-app-version 1",
     )
     print("Finished publishing")
 

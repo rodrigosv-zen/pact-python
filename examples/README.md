@@ -68,18 +68,17 @@ execution of the consumer tests.
 
 When the tests are run, the "minimum" is to generate the Pact contract JSON, additional options are available. The
 following commands can be run from the `examples/consumer` folder:
-
+- Create a virtual environment:
+    ```bash
+    python -m venv venv
+    ```
+- Activate the virtual environment:
+    ```bash
+    source venv/bin/activate
+    ```
 - Install any necessary dependencies:
     ```bash
     pip install -r requirements.txt
-    ```
-- To startup the broker, run the tests, and publish the results to the broker:
-    ```bash
-    pytest --run-broker True --publish-pact 1 
-    ```
-- Alternatively the same can be performed with the following command, which is called from a `make consumer`:
-    ```bash
-    ./run_pytest.sh
     ```
 - To run the tests, and publish the results to the broker which is already running:
     ```bash
