@@ -47,8 +47,7 @@ minikube ip
 ```
 and replace the result in the ```PACT_BROKER_DATABASE_HOST``` above.
 
-You should then be able to open a browser and navigate to http://localhost where you will initially be able to see the
-default Example App/Example API Pact.
+You should then be able to open a browser and navigate to http://192.168.64.9, it will open a form to log in, just use ```pactbroker``` as username and password, then you will initially be able to see the default Example App/Example API Pact.
 
 Running the [Pact Broker] outside the tests will mean you are able to then see the [Pact file]s submitted to the
 [Pact Broker] as the various tests are performed.
