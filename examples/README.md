@@ -45,9 +45,9 @@ minikube ip
 ```
 and replace the result in the ```PACT_BROKER_DATABASE_HOST``` above, and in the next places:
 
-examples/common/sharedfixtures.py ```PACT_BROKER_BASE_URL```
-examples/consumer/tests/consumer/test_user_consumer.py ```PACT_BROKER_URL```
-examples/flask_provider/verify_pact.sh ```--pact-url```
+  * examples/common/sharedfixtures.py ```PACT_BROKER_BASE_URL```
+  * examples/consumer/tests/consumer/test_user_consumer.py ```PACT_BROKER_URL```
+  * examples/flask_provider/verify_pact.sh ```--pact-url```
 
 The broker takes some time to set up the app to release the UI, after that, you should then be able to open a browser and navigate to http://192.168.64.9, it will open a form to log in, just use ```pactbroker``` as username and password, then you will be able to see the default Example App/Example API Pact.
 
