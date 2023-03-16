@@ -31,10 +31,21 @@ The [Pact Broker] stores [Pact file]s and [Pact verification] results. It is use
 ### Running
 
 These examples run the [Pact Broker] as part of the tests when specified. It can be run outside the tests as well by
-performing the following command from a separate terminal in the `examples/broker` folder:
+performing the following commands from a separate terminal:
+
+Start postgres
 ```bash
-docker-compose up
+docker run -d --name postgres -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgres -e POSTGRES_DB=postgres -p 5432:5432 postgres
 ```
+Start the broker
+```bash
+docker run -d --name pact-broker --link postgres:postgres -e PACT_BROKER_DATABASE_USERNAME=postgres -e PACT_BROKER_DATABASE_PASSWORD=password -e PACT_BROKER_DATABASE_HOST=192.168.64.9 -e PACT_BROKER_DATABASE_NAME=postgres -e PACT_BROKER_BASIC_AUTH_USERNAME=pactbroker -e  PACT_BROKER_BASIC_AUTH_PASSWORD=pactbroker -p 80:9292 pactfoundation/pact-broker
+```
+if the database host doesn't match, run:
+```bash
+minikube ip
+```
+and replace the result in the ```PACT_BROKER_DATABASE_HOST``` above.
 
 You should then be able to open a browser and navigate to http://localhost where you will initially be able to see the
 default Example App/Example API Pact.
