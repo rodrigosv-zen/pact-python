@@ -7,8 +7,6 @@
   * [common](#common)
   * [consumer](#consumer)
   * [flask_provider](#flask_provider)
-  * [fastapi_provider](#fastapi_provider)
-  * [message](#message)
   * [pacts](#pacts)
 
 ## Overview
